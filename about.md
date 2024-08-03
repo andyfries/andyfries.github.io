@@ -3,27 +3,8 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+I'm Andy Fries, a software engineer passionate about building high-quality software and teams. I spent most of the last decade at Amazon, solving problems from studio asset management (with some truly massive S3 buckets) to serving music requests on Alexa and many more in between. More recently I've applied those skills for the social good at [ParentCubby](https://parentcubby.com/), a pre-seed startup working to better connect parents and kids through technology.
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+As a senior engineering leader, I've found my niche in the intersection of people and technology. I take a holistic view of delivering software, and I've learned that the best quality solutions most enjoyed by users tend to be built by teams of happy engineers who are fulfilled by their work.
 
-There are currently two themes built on Poole:
-
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](https://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Atom](https://atom.io)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+You can reach me at [contact@andyfries.com](mailto:contact@andyfries.com).
