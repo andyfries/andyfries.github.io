@@ -5,6 +5,7 @@ url:                 https://andyfries.com
 baseurl:             ''
 paginate:            5
 permalink:           pretty
+excerpt_separator:   '<!--more-->'
 
 # About/contact
 author:
@@ -17,3 +18,4 @@ plugins:
 
 # Custom vars
 google_analytics_id: G-TWCTGMEFFE
+

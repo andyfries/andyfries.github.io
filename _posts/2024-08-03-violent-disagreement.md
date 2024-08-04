@@ -5,6 +5,8 @@ title: Violent Disagreement
 
 Years ago, a mentor of mine introduced me to the concept of "violent disagreement". Initially I balked at the idea of _violently_ opposing anything in a professional setting, but in time it has become one of my most used tools in making quality decisions quickly and at scale. In this post I'll dive into what it is, how to do it, why it works, and when to use it.
 
+<!--more-->
+
 ## What
 
 First, let's cover the obvious. We're using "violent" in the sense of strength and intensity, not physical force. While "violent disagreement" may sound extreme and a bit jarring, it's a common phenomenon you likely recognize, if not by name. When someone proposes shipping a change to prod without going through the usual testing procedures and you try to remain composed while telling them in no uncertain terms how terribly that could go wrong, that's violent disagreement. When a partner team proposes a design that would increase load on your team's services by 100x and you want to discuss tradeoffs and alternatives before implementing it, that's violent disagreement. 
