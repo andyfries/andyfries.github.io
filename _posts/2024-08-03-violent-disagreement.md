@@ -21,8 +21,7 @@ Conversely, if someone is raising disagreement with your proposal, discuss wheth
 
 ## Why
 
-Raising violent disagreement marks a clear decision point for everyone involved. This is the first major benefit. If you've ever been a part of a code review comment thread that won't seem to end, or a standoff between engineers and PMs on whether a feature can/should be included for a milestone, you're familiar with what happens when decision points aren't clear. Issues are raised, arguments are made, individuals dig in, and progress grinds to a halt. Framing issues as violent disagreement can break this deadlock: is the concern severe enough to require a change of plan, or can it be mitigated otherwise?
-
+Raising violent disagreement marks a clear decision point for everyone involved. If you've ever been a part of a code review comment thread that won't seem to end, or a standoff between engineers and PMs on whether a feature can/should be included for a milestone, you're familiar with what happens when decision points aren't clear. Issues are raised, arguments are made, individuals dig in, and progress grinds to a halt. Framing issues as violent disagreement can break this deadlock: is the concern severe enough to require a change of plan, or can it be mitigated otherwise?
 
 
 ## When
