@@ -5,7 +5,7 @@ description:         ''
 url:                 https://andyfries.com
 baseurl:             ''
 paginate:            5
-permalink:           pretty
+permalink:           /:title/
 excerpt_separator:   '<!--more-->'
 
 # About/contact
