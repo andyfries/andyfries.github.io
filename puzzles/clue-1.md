@@ -60,7 +60,7 @@ is_puzzle: true
 Error: Document corrupted
     at ElloGuvnah.init (bundle.js:42)
     at UhOh.start (left-pad.js:13)
-    at Object.<anonymous> (/npmpm/pm/npm/main:7)
+    at Object.&lt;anonymous&gt; (/npmpm/pm/npm/main:7)
     at Module._compile (internal/modules.js:54)
     at runMain (bootstrap.js:23)
 
