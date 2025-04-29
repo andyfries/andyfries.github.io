@@ -45,6 +45,7 @@ is_puzzle: true
     height: 20px;
     border-radius: 50%;
     border: 1px solid #fff;
+    display: none;
   }
 
   .calc-value {
@@ -126,7 +127,8 @@ is_puzzle: true
   }
 </style>
 
-<a href="https://example.com" id="successButton" class="success-button" style="pointer-events: auto;">Continue</a>
+<a href="/puzzles/lock-combo-answer-page"
+ id="successButton" class="success-button" style="pointer-events: auto;">Continue</a>
 <div class="calculator" id="calculatorContainer">
   <div class="calc-display-wrapper">
     <div class="calc-left-display">

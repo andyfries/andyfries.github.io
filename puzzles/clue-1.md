@@ -1,6 +1,6 @@
 ---
 layout: clue
-title: Test Clue
+title: "Clue #1"
 permalink: /puzzles/clue-1/
 robots: noindex
 is_puzzle: true
