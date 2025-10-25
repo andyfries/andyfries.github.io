@@ -2,10 +2,19 @@
 layout: default
 ---
 
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
+<div class="post-wrapper">
+  <div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <span class="post-date">{{ page.date | date_to_string }}</span>
+    {{ content }}
+  </div>
+
+  <aside class="toc-sidebar">
+    <nav class="toc">
+      <h3>Contents</h3>
+      <ul id="toc-list"></ul>
+    </nav>
+  </aside>
 </div>
 
 {% if site.related_posts.size >= 1 %}

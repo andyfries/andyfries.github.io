@@ -1,0 +1,74 @@
+/* Table of Contents Sidebar */
+
+.post-wrapper {
+  position: relative;
+}
+
+.toc-sidebar {
+  display: none;
+}
+
+/* Show TOC on wide screens */
+@media (min-width: 64em) {
+  .post-wrapper {
+    position: relative;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .post {
+    /* Keep the post at its normal width */
+    max-width: 38rem;
+  }
+
+  .toc-sidebar {
+    display: block;
+    position: absolute;
+    left: calc(100% + 2rem);
+    top: 0;
+    width: 240px;
+  }
+
+  .toc {
+    position: sticky;
+    top: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  .toc h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #313131;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .toc li {
+    margin-bottom: 0.25rem;
+  }
+
+  .toc li.h3 {
+    padding-left: 1rem;
+  }
+
+  .toc a {
+    color: #515151;
+    display: block;
+    padding: 0.25rem 0;
+  }
+
+  .toc a:hover {
+    color: #268bd2;
+    text-decoration: none;
+  }
+}
