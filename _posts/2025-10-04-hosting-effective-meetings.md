@@ -9,6 +9,10 @@ Why should you care about hosting effective meetings? One simple reason is that 
 <!--more-->
 
 
+<div class="message">
+    <strong>Note: </strong>This essay is adapted from a presentation I gave internally at Airbnb. The content is broadly applicable though so I wanted to share it more publicly. As always, these are my personal views and do not necessarily represent those of my employer.
+</div>
+
 ## Counterexamples
 Effective meetings are often less obvious than their ineffective counterparts, so let's begin sketching out a definition by counterexample. Listed below are some common varieties of ineffective meetings.
 #### Purgatory
@@ -86,6 +90,8 @@ Frequently revisit the purpose of the meeting to keep it moving towards a result
 >"I see we're nearing the end of our time. Let's refocus on X to make sure we get a decision there."
 
 >"It seems like we could spend a while on that topic so I'd recommend we move it to a separate discussion."
+
+
 ### After the Meeting
 **Are these results useful beyond this meeting?**
 Add context to the results to make them more durable. A short paragraph at the top of meeting notes can go a long way towards making them accessible to non-participants.
