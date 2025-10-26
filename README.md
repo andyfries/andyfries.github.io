@@ -40,6 +40,25 @@ title: "Your Post Title"
 ---
 ```
 
+### Working with Drafts
+
+Drafts are unpublished posts stored in the `_drafts` folder.
+
+1. Create a draft (no date prefix needed):
+   ```bash
+   _drafts/my-draft-post.md
+   ```
+
+2. Preview drafts locally:
+   ```bash
+   bundle exec jekyll serve --drafts
+   ```
+
+3. Publish a draft by moving it to `_posts` and adding the date prefix:
+   ```bash
+   mv _drafts/my-draft-post.md _posts/2025-10-25-my-draft-post.md
+   ```
+
 ## Configuration
 
 Site configuration can be modified in `_config.yml`.

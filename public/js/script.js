@@ -21,7 +21,7 @@
     var post = document.querySelector('.post');
     if (!post) return;
 
-    var headings = post.querySelectorAll('h2, h3');
+    var headings = post.querySelectorAll('h1:not(.post-title), h2, h3, h4');
     if (headings.length === 0) {
       var tocSidebar = document.querySelector('.toc-sidebar');
       if (tocSidebar) tocSidebar.style.display = 'none';
@@ -35,7 +35,7 @@
       }
 
       var li = document.createElement('li');
-      li.className = heading.tagName.toLowerCase();
+      li.className = 'toc-' + heading.tagName.toLowerCase();
 
       var a = document.createElement('a');
       a.href = '#' + heading.id;

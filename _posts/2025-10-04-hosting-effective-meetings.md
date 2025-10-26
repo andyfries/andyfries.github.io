@@ -15,11 +15,11 @@ Why should you care about hosting effective meetings? One simple reason is that 
 
 ## Counterexamples
 Effective meetings are often less obvious than their ineffective counterparts, so let's begin sketching out a definition by counterexample. Listed below are some common varieties of ineffective meetings.
-#### Purgatory
+### Purgatory
 Someone has a document they’d like feedback on and adds it to the end of a long agenda for a recurring sync. They wait patiently for most of the meeting and only 10 minutes remain when attention turns to the document. The host postpones discussion to the next meeting, leaving the document author blocked without feedback. Alternatively, they rush through the document and provide cursory feedback without getting into the substance of it.
-#### Steamroller
+### Steamroller
 Two teams are meeting to discuss options for a technical redesign. The conversation is dominated by one engineer that keeps bringing up tangents and leaves little room for others to talk. The soft-spoken host attempts to redirect the discussion but another tangent quickly arises to derail the meeting.
-#### Mystery decision
+### Mystery decision
 After a thorough discussion about a pressing problem, the attendees unanimously agree on a path forward. A month later a new stakeholder asks why that decision was made; no one quite remembers why, only that they were confident it was the right call.
 ## Efficiency & Empathy
 To identify symptoms of an ineffective meeting, I find it useful to think in terms of efficiency and empathy. Efficiency is the ability to convert a meeting purpose into results; empathy is considering the needs of participants to ensure all stakeholders can benefit from the meeting. These are two perspectives on the same dynamic: an efficient meeting will be a better use of everyone's time, and an inclusive meeting will be more efficient. Revisiting our examples, we can describe the issues in these terms. 

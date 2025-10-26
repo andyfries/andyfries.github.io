@@ -428,3 +428,74 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+
+/*
+ * Readability Enhancements
+ */
+
+/* Improved line height for body text */
+html {
+  line-height: 1.6;
+}
+
+/* Better paragraph spacing */
+.post p {
+  margin-bottom: 1.25rem;
+}
+
+/* Enhanced blockquotes */
+blockquote {
+  font-style: italic;
+  font-size: 1.05em;
+  color: #555;
+  border-left: 0.3rem solid #d28445;
+}
+
+/* Better subheading hierarchy */
+.post h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+
+.post h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: #404040;
+}
+
+/* Footnotes separator and styling */
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #eee;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.footnotes ol {
+  padding-left: 1.5rem;
+}
+
+.footnotes li {
+  margin-bottom: 0.5rem;
+}
+
+.footnotes p {
+  margin-bottom: 0.5rem;
+}
+
+/* Footnote reference links */
+sup a.footnote,
+a.reversefootnote {
+  text-decoration: none;
+  border-bottom: none;
+  padding: 0 0.2em;
+}
+
+sup a.footnote:hover,
+a.reversefootnote:hover {
+  background-color: #f0f0f0;
+  border-radius: 2px;
+}
