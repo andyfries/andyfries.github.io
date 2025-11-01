@@ -28,6 +28,7 @@ My review process is a collection of these heuristics:
 - If I see the same pattern in multiple classes without a unifying structure that makes it apparent, that's a sign an abstraction like inheritance or composition might be needed to communicate the pattern to readers.
 
 Here’s an example:
+
 ```java
 public class AuditInfo {
   private Map<String, String> fields = new HashMap<>();
@@ -39,16 +40,23 @@ public class AuditInfo {
   
   public void addTripInfo(Trip trip) {
     fields.put("tripId", trip.getId());
-    fields.put("tripStartTime", trip.getStartTime());
+    fields.put("tripStartTime", trip.getStartTime().toString());
+    fields.put("tripEndTime", trip.getEndTime().toString());
+    fields.put("tripDestination", trip.getDestinationId());
+  }
+  
+  public void addLocationInfo(Location location) {
+    fields.put("locationId", location.getId());
   }
 }
 ```
 
-What’s striking about this snippet? For me it’s the similarity between the two `add` methods. Both look like they’re doing roughly the same thing but there’s nothing in the code to enforce that. This prompts me to read each one carefully to examine the differences between the two. That careful reading is a point of friction for the reader, and now we have a useful piece of feedback:
+What’s striking about this snippet? For me it’s the similarity between the `add` methods. They look like they’re doing roughly the same thing but there’s nothing in the code to enforce that. This prompts me to read each one carefully to examine the differences between them. That careful reading is a point of friction for the reader, and now we have a useful piece of feedback:
 
 > I notice we have multiple `add` methods doing almost the same thing. Can we do something to make that pattern more explicit?
 
 In similar cases I’ve noticed that interfaces can be useful to encapsulate repetition, so let’s see what that looks like:
+
 ```java
 public interface Auditable {
   Map<String, String> getAuditInfo();
@@ -63,26 +71,19 @@ public class AuditInfo {
 }
 
 
-public class User implements Auditable {
-  @Override
-  public Map<String, String> getAuditInfo() {
-    Map<String, String> fields = new HashMap<>();
-    fields.put("name", this.getName());
-    fields.put("userId", this.getId());
-    return fields;
-  }
-}
-
-
 public class Trip implements Auditable {
   @Override
   public Map<String, String> getAuditInfo() {
     Map<String, String> fields = new HashMap<>();
     fields.put("tripId", this.getId());
-    fields.put("tripStartTime", this.getStartTime());
+    fields.put("tripStartTime", this.getStartTime().toString());
+    fields.put("tripEndTime", this.getEndTime().toString());
+    fields.put("tripDestination", this.getDestinationId());
     return fields;
   }
 }
+
+// same approach for User and Location
 ```
 
 This creates a more extensible solution with better cohesion. `AuditInfo` doesn’t have to keep track of all the relevant fields for every auditable type which will keep it simple as the number of audited types grows.
