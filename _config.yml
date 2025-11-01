@@ -17,6 +17,14 @@ author:
 plugins:
   - jekyll-paginate
 
+# Markdown
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
 # Custom vars
 google_analytics_id: G-TWCTGMEFFE
 
