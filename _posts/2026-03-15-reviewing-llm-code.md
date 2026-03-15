@@ -3,7 +3,7 @@ layout: post
 title: On Reviewing Code in the Age of LLMs
 ---
 
-How do you enforce good coding practices when engineers are increasingly using LLM-driven tools to author changes? I would argue these changes aren't as disruptive as they might seem.
+How do you maintain quality when reviewing high volumes of LLM-generated code? I'd argue we don't have to look far for the answer.
 
 <!--more-->
 
