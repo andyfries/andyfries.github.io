@@ -57,14 +57,18 @@ def create_email(api_key, subject, body, status):
     payload = json.dumps(
         {"subject": subject, "body": body, "status": status}
     ).encode()
+    headers = {
+        "Authorization": f"Token {api_key}",
+        "Content-Type": "application/json",
+    }
+    if status == "about_to_send":
+        # Buttondown requires explicit confirmation to send (not just draft) via API.
+        headers["X-Buttondown-Live-Dangerously"] = "true"
     req = urllib.request.Request(
         API_URL,
         data=payload,
         method="POST",
-        headers={
-            "Authorization": f"Token {api_key}",
-            "Content-Type": "application/json",
-        },
+        headers=headers,
     )
     with urllib.request.urlopen(req) as resp:
         return resp.status
