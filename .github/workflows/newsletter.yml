@@ -8,9 +8,13 @@ on:
   workflow_dispatch:
     inputs:
       post:
-        description: "Post file to draft, e.g. _posts/2026-07-18-slug.md (blank = most recent)"
+        description: "Post file, e.g. _posts/2026-07-18-slug.md (blank = most recent)"
         required: false
         default: ""
+      send:
+        description: "Send to subscribers now (unchecked = create a draft)"
+        type: boolean
+        default: false
 
 # Avoid overlapping runs racing on the same push.
 concurrency:
@@ -69,8 +73,11 @@ jobs:
         if: steps.added.outputs.files != ''
         run: JEKYLL_ENV=production bundle exec jekyll build
 
-      - name: Create Buttondown drafts
+      - name: Send or draft newsletter
         if: steps.added.outputs.files != ''
         env:
           BUTTONDOWN_KEY: ${{ secrets.BUTTONDOWN_KEY }}
+          # Push = ready to publish, so send. Manual dispatch drafts unless
+          # you explicitly tick "send".
+          BUTTONDOWN_STATUS: ${{ (github.event_name == 'push' || github.event.inputs.send == 'true') && 'about_to_send' || 'draft' }}
         run: python3 .github/scripts/send_newsletter.py ${{ steps.added.outputs.files }}

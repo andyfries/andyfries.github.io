@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Create a Buttondown *draft* for each newly added blog post.
+"""Create a Buttondown email for each given blog post.
 
 Reads the full-content feed (_site/newsletter.xml), matches it against the
-post files added in this push (passed as CLI args), and POSTs a draft email
-per matched post. Drafts are never sent automatically — you review and send
-from the Buttondown dashboard.
+post files passed as CLI args, and POSTs one email per matched post. The
+BUTTONDOWN_STATUS env var controls the outcome: "draft" saves it for review,
+"about_to_send" sends it to subscribers immediately (irreversible).
 """
 import html
 import json
@@ -52,9 +52,10 @@ def parse_feed(text):
     return entries
 
 
-def create_draft(api_key, subject, body):
+def create_email(api_key, subject, body, status):
+    # status "draft" = save for review; "about_to_send" = send to subscribers now.
     payload = json.dumps(
-        {"subject": subject, "body": body, "status": "draft"}
+        {"subject": subject, "body": body, "status": status}
     ).encode()
     req = urllib.request.Request(
         API_URL,
@@ -74,9 +75,14 @@ def main():
     if not api_key:
         sys.exit("BUTTONDOWN_KEY is not set")
 
+    status = os.environ.get("BUTTONDOWN_STATUS", "draft")
+    if status not in ("draft", "about_to_send"):
+        sys.exit(f"Unexpected BUTTONDOWN_STATUS '{status}' (want 'draft' or 'about_to_send')")
+    verb = "Sent" if status == "about_to_send" else "Drafted"
+
     added_posts = [p for p in sys.argv[1:] if p.startswith("_posts/")]
     if not added_posts:
-        print("No newly added posts in this push; nothing to draft.")
+        print("No posts given; nothing to do.")
         return
 
     with open(FEED_PATH, encoding="utf-8") as f:
@@ -89,10 +95,10 @@ def main():
             print(f"WARN: no feed entry found for {path} (slug '{slug}'); skipping")
             continue
         try:
-            status = create_draft(api_key, entry["title"], entry["body"])
-            print(f"Drafted '{entry['title']}' (HTTP {status})")
+            code = create_email(api_key, entry["title"], entry["body"], status)
+            print(f"{verb} '{entry['title']}' (HTTP {code})")
         except urllib.error.HTTPError as e:
-            print(f"ERROR drafting '{entry['title']}': HTTP {e.code} {e.read().decode()}")
+            print(f"ERROR ({verb.lower()}) '{entry['title']}': HTTP {e.code} {e.read().decode()}")
             sys.exit(1)
 
 
