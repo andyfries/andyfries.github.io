@@ -1,0 +1,56 @@
+name: Draft newsletter for new posts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_posts/**"
+
+# Avoid overlapping runs racing on the same push.
+concurrency:
+  group: newsletter-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Need the previous commit so we can diff what this push added.
+          fetch-depth: 2
+
+      - name: Determine newly added posts
+        id: added
+        run: |
+          before='${{ github.event.before }}'
+          if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
+            range="HEAD^ HEAD"
+          else
+            range="$before ${{ github.sha }}"
+          fi
+          files=$(git diff --name-status --diff-filter=A $range -- '_posts/**' \
+            | awk '{print $2}' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "Added posts: $files"
+
+      - name: Stop if no new posts
+        if: steps.added.outputs.files == ''
+        run: echo "No newly added posts; skipping."
+
+      - name: Set up Ruby
+        if: steps.added.outputs.files != ''
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Build site
+        if: steps.added.outputs.files != ''
+        run: JEKYLL_ENV=production bundle exec jekyll build
+
+      - name: Create Buttondown drafts
+        if: steps.added.outputs.files != ''
+        env:
+          BUTTONDOWN_KEY: ${{ secrets.BUTTONDOWN_KEY }}
+        run: python3 .github/scripts/send_newsletter.py ${{ steps.added.outputs.files }}
