@@ -28,14 +28,16 @@ AI models are faster at research than I will ever be. They can source examples, 
 
 To a lesser extent, they’re also useful for feedback. I’ve had moderate success with prompting AI models to analyze the logical flow of an argument or flag inconsistencies in tense. The feedback is worthless as often as not, but it’s an improvement over what I’m able to catch independently. For example, I went back and forth with an AI model when editing [Why Write? (Original Draft)](/why-write-original/) before arriving at the [published version](/why-write). I retained my voice by seeking the spirit of the feedback rather than blindly applying recommendations.
 
-## Inputs, not Outputs
+## Thinking is the Output
 So much of the value of writing is in the process. Augmenting the inputs to that process strengthens it; outsourcing the outputs circumvents it.
 
 This doesn’t just fail readers, it also deprives authors. One of the main problems documents solve is sorting out your own thinking: why does this project matter? do I understand the tradeoffs in choosing one approach over another? how will this choice limit our options in the future?
 
 AI writing might get better over time, and it may even grow to rival humans in communicating ideas, but it will never improve _your_ thinking.
 
---------
+If you read this far, you’d probably enjoy Kevin London’s [post](https://www.kevinlondon.com/2026/07/15/nothing-to-catch/) on a similar topic that speaks more to the personal risks of writing with AI.
+
+-----
 
 ### Postscript - What About Code?
 There’s an unresolved tension in this essay. I use AI to generate code (i.e. create an output) all the time. Why is that any different than a document?
