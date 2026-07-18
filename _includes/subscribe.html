@@ -1,0 +1,64 @@
+<section class="subscribe">
+  <h3 class="subscribe-title">Enjoy this post? Get new ones by email.</h3>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/andyfries"
+    method="post"
+    class="embeddable-buttondown-form"
+  >
+    <label for="bd-email" class="subscribe-visually-hidden">Enter your email</label>
+    <div class="subscribe-row">
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
+      <input type="submit" value="Subscribe" />
+    </div>
+  </form>
+</section>
+
+<style>
+  .subscribe {
+    margin: 2.5rem 0 1rem;
+    padding: 1.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fbfbfb;
+  }
+  .subscribe .subscribe-title {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #404040;
+  }
+  .subscribe-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+  .subscribe-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .subscribe input[type="email"] {
+    flex: 1 1 220px;
+    padding: .5rem .6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  .subscribe input[type="submit"] {
+    padding: .5rem 1.1rem;
+    border: 0;
+    border-radius: 4px;
+    background: #268bd2;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .subscribe input[type="submit"]:hover {
+    background: #1a6fac;
+  }
+</style>
