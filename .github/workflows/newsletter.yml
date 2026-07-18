@@ -62,6 +62,7 @@ jobs:
         if: steps.added.outputs.files != ''
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: "3.4"
           bundler-cache: true
 
       - name: Build site
