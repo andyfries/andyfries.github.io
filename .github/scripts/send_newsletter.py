@@ -58,8 +58,8 @@ def browser_header(url):
     """Email-only note linking back to the web version of the post."""
     display = re.sub(r"^https?://", "", url).rstrip("/")
     return (
-        f'<p><em>If you\'d prefer reading this in a browser, go to '
-        f'<a href="{url}">{display}</a>.</em></p>\n\n'
+        f'<blockquote><p><em>If you\'d prefer reading this in a browser, go to '
+        f'<a href="{url}">{display}</a>.</em></p></blockquote>\n\n'
     )
 
 
