@@ -43,13 +43,24 @@ def parse_feed(text):
         content = CONTENT_RE.search(block)
         if not (title and link and content):
             continue
-        slug = slug_from_url(link.group(1))
+        url = link.group(1)
+        slug = slug_from_url(url)
         entries[slug] = {
             "title": html.unescape(title.group(1).strip()),
+            "url": url,
             # feed content is xml-escaped HTML; unescape once back to real HTML
             "body": html.unescape(content.group(1).strip()),
         }
     return entries
+
+
+def browser_header(url):
+    """Email-only note linking back to the web version of the post."""
+    display = re.sub(r"^https?://", "", url).rstrip("/")
+    return (
+        f'<p><em>If you\'d prefer reading this in a browser, go to '
+        f'<a href="{url}">{display}</a>.</em></p>\n\n'
+    )
 
 
 def create_email(api_key, subject, body, status):
@@ -98,8 +109,9 @@ def main():
         if not entry:
             print(f"WARN: no feed entry found for {path} (slug '{slug}'); skipping")
             continue
+        body = browser_header(entry["url"]) + entry["body"]
         try:
-            code = create_email(api_key, entry["title"], entry["body"], status)
+            code = create_email(api_key, entry["title"], body, status)
             print(f"{verb} '{entry['title']}' (HTTP {code})")
         except urllib.error.HTTPError as e:
             print(f"ERROR ({verb.lower()}) '{entry['title']}': HTTP {e.code} {e.read().decode()}")
