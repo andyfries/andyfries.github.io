@@ -13,6 +13,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 
 FEED_PATH = "_site/newsletter.xml"
 API_URL = "https://api.buttondown.com/v1/emails"
@@ -52,6 +53,22 @@ def parse_feed(text):
             "body": html.unescape(content.group(1).strip()),
         }
     return entries
+
+
+def absolutize_links(body, url):
+    """Rewrite root-relative href/src (e.g. "/why-write") to absolute URLs.
+
+    Root-relative links resolve fine on the site but break in email clients,
+    which have no base domain. Derives the origin from the post's own URL and
+    skips protocol-relative ("//host") and already-absolute links.
+    """
+    parts = urlsplit(url)
+    base = f"{parts.scheme}://{parts.netloc}"
+    return re.sub(
+        r'(href|src)="(/(?!/)[^"]*)"',
+        lambda m: f'{m.group(1)}="{base}{m.group(2)}"',
+        body,
+    )
 
 
 def browser_header(url):
@@ -109,7 +126,7 @@ def main():
         if not entry:
             print(f"WARN: no feed entry found for {path} (slug '{slug}'); skipping")
             continue
-        body = browser_header(entry["url"]) + entry["body"]
+        body = browser_header(entry["url"]) + absolutize_links(entry["body"], entry["url"])
         try:
             code = create_email(api_key, entry["title"], body, status)
             print(f"{verb} '{entry['title']}' (HTTP {code})")
