@@ -77,7 +77,8 @@ jobs:
         if: steps.added.outputs.files != ''
         env:
           BUTTONDOWN_KEY: ${{ secrets.BUTTONDOWN_KEY }}
-          # Push = ready to publish, so send. Manual dispatch drafts unless
-          # you explicitly tick "send".
-          BUTTONDOWN_STATUS: ${{ (github.event_name == 'push' || github.event.inputs.send == 'true') && 'about_to_send' || 'draft' }}
+          # Push creates a Buttondown DRAFT to preview — never sends on its own.
+          # Broadcasting to subscribers requires an explicit manual dispatch with
+          # "send" ticked (the only path that yields 'about_to_send').
+          BUTTONDOWN_STATUS: ${{ github.event.inputs.send == 'true' && 'about_to_send' || 'draft' }}
         run: python3 .github/scripts/send_newsletter.py ${{ steps.added.outputs.files }}

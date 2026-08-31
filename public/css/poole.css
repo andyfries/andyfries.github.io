@@ -120,6 +120,13 @@ ul, ol, dl {
   margin-bottom: 1rem;
 }
 
+/* A nested list sits inside its parent <li>, so its bottom margin renders as
+   an extra gap after the sub-list. Drop it so indented bullets don't add space. */
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
 dt {
   font-weight: bold;
 }
