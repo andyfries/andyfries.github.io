@@ -80,11 +80,14 @@ def browser_header(url):
     )
 
 
-def create_email(api_key, subject, body, status):
+def create_email(api_key, subject, body, status, canonical_url=None):
     # status "draft" = save for review; "about_to_send" = send to subscribers now.
-    payload = json.dumps(
-        {"subject": subject, "body": body, "status": status}
-    ).encode()
+    # canonical_url points search engines (and the email header) at the original
+    # post on the site, so Buttondown's archive doesn't compete for SEO.
+    fields = {"subject": subject, "body": body, "status": status}
+    if canonical_url:
+        fields["canonical_url"] = canonical_url
+    payload = json.dumps(fields).encode()
     headers = {
         "Authorization": f"Token {api_key}",
         "Content-Type": "application/json",
@@ -128,7 +131,7 @@ def main():
             continue
         body = browser_header(entry["url"]) + absolutize_links(entry["body"], entry["url"])
         try:
-            code = create_email(api_key, entry["title"], body, status)
+            code = create_email(api_key, entry["title"], body, status, entry["url"])
             print(f"{verb} '{entry['title']}' (HTTP {code})")
         except urllib.error.HTTPError as e:
             print(f"ERROR ({verb.lower()}) '{entry['title']}': HTTP {e.code} {e.read().decode()}")
