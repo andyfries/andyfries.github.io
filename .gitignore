@@ -9,8 +9,9 @@ vendor/
 # Python cache from local script runs
 __pycache__/
 
-# Private Claude Code writing tooling (separate repo)
-.claude/
+# Private Claude Code writing tooling — symlink to a separate repo (~/writing-skills).
+# No trailing slash: the pattern must match a symlink (a file to git), not just a dir.
+.claude
 
 # macOS
 .DS_Store
