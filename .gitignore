@@ -8,3 +8,9 @@ vendor/
 
 # Python cache from local script runs
 __pycache__/
+
+# Private Claude Code writing tooling (separate repo)
+.claude/
+
+# macOS
+.DS_Store
