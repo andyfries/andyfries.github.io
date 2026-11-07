@@ -1,0 +1,37 @@
+#!/bin/sh
+# Rewrite links between posts to {% post_url %} in staged posts/drafts, then re-stage them.
+# Enable once per clone:  git config core.hooksPath .githooks
+
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+LINT="$ROOT/script/fix_post_links.py"
+[ -f "$LINT" ] || { echo "pre-commit: $LINT not found" >&2; exit 1; }
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR -- '_posts/*.md' '_drafts/*.md')
+[ -z "$FILES" ] && exit 0
+
+TMP=$(mktemp -d) || exit 1
+trap 'rm -rf "$TMP"' EXIT
+
+STATUS=0
+for f in $FILES; do
+  # Check the staged version, which is what's being committed.
+  mkdir -p "$TMP/$(dirname "$f")"
+  git show ":$f" > "$TMP/$f"
+  OUT=$(python3 "$LINT" --site-root "$ROOT" "$TMP/$f" | sed "s|$TMP/||g")
+  if [ $? -eq 0 ] && ! echo "$OUT" | grep -q "needs post_url"; then
+    [ -n "$OUT" ] && echo "$OUT" >&2   # warnings only, e.g. links to unpublished drafts
+    continue
+  fi
+  if ! git diff --quiet -- "$f"; then
+    # Re-staging would sweep unstaged edits into this commit, so don't auto-fix.
+    echo "$OUT" >&2
+    echo "pre-commit: $f also has unstaged changes, so its links weren't auto-fixed." >&2
+    echo "Stage or stash those changes and commit again, or fix it with:" >&2
+    echo "  python3 script/fix_post_links.py --fix $f" >&2
+    STATUS=1
+    continue
+  fi
+  python3 "$LINT" --fix --site-root "$ROOT" "$f" >&2
+  git add -- "$f"
+done
+exit $STATUS

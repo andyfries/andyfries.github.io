@@ -9,6 +9,15 @@ Personal blog and website built with Jekyll.
 - Ruby (3.0 or higher)
 - Bundler (`gem install bundler`)
 
+### Git Hooks
+
+Enable the repo's hooks once per clone:
+```bash
+git config core.hooksPath .githooks
+```
+
+The pre-commit hook rewrites links between posts to Jekyll's `{% post_url %}` tag in staged `_posts/` and `_drafts/` files, using `script/fix_post_links.py`.
+
 ### Running the Site Locally
 
 1. Install dependencies:
