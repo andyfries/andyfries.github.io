@@ -17,6 +17,14 @@ author:
 plugins:
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Keep the noindex puzzle pages out of the sitemap
+defaults:
+  - scope:
+      path: "puzzles"
+    values:
+      sitemap: false
 
 # Social previews (jekyll-seo-tag)
 logo:                /public/android-chrome-512x512.png
