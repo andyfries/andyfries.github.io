@@ -26,6 +26,8 @@
     position: absolute;
     left: calc(100% + 2rem);
     top: 0;
+    /* Span the full post height so the sticky .toc has room to stick */
+    bottom: 0;
     width: 240px;
   }
 
@@ -83,5 +85,16 @@
   .toc a:hover {
     color: #268bd2;
     text-decoration: none;
+  }
+
+  .toc a {
+    border-left: 2px solid transparent;
+    margin-left: -0.5rem;
+    padding-left: calc(0.5rem - 2px);
+  }
+
+  .toc a.active {
+    border-left-color: #d28445;
+    font-weight: bold;
   }
 }

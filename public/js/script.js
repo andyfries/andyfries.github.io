@@ -64,10 +64,45 @@
     });
   }
 
+  // Highlight the TOC entry for the section currently being read
+  function trackActiveSection() {
+    var links = document.querySelectorAll('#toc-list a');
+    if (links.length === 0) return;
+
+    var entries = Array.prototype.map.call(links, function(link) {
+      return { link: link, heading: document.getElementById(link.hash.slice(1)) };
+    });
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var current = null;
+      // The active section is the last heading scrolled past the top third of the screen
+      var threshold = window.innerHeight / 3;
+      entries.forEach(function(entry) {
+        if (entry.heading && entry.heading.getBoundingClientRect().top <= threshold) {
+          current = entry;
+        }
+      });
+      entries.forEach(function(entry) {
+        entry.link.classList.toggle('active', entry === current);
+      });
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    update();
+  }
+
   function init() {
     // TOC reads heading text, so build it before anchors add a "#"
     generateTOC();
     addHeadingAnchors();
+    trackActiveSection();
   }
 
   // Run after DOM is loaded

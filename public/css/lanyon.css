@@ -38,6 +38,7 @@
 html,
 body {
   overflow-x: hidden;
+  overflow-x: clip; /* clip (unlike hidden) keeps position: sticky working */
 }
 
 html {
