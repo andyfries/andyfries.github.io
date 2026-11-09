@@ -1,0 +1,155 @@
+/*
+ * Dark mode: follows the reader's system setting.
+ * Loaded after the theme stylesheets so these overrides win at equal specificity.
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Base */
+  body {
+    color: #c4c4c4;
+    background-color: #1a1a1c;
+  }
+  a {
+    color: #4ea1e0;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .post h3,
+  strong {
+    color: #e4e4e4;
+  }
+  hr {
+    border-top-color: #333;
+    border-bottom-color: #1a1a1c;
+  }
+  abbr {
+    color: #aaa;
+  }
+
+  /* Code */
+  code {
+    color: #e88a92;
+    background-color: #262629;
+  }
+  pre {
+    background-color: #232326;
+  }
+
+  /* Quotes, tables, messages */
+  blockquote {
+    color: #a8a8a8;
+  }
+  table, th, td {
+    border-color: #333;
+  }
+  tbody tr:nth-child(odd) td,
+  tbody tr:nth-child(odd) th {
+    background-color: #222225;
+  }
+  .message {
+    color: #aaa;
+    background-color: #232326;
+  }
+
+  /* Masthead and sidebar toggle */
+  .masthead {
+    border-bottom-color: #2c2c2f;
+  }
+  .masthead-title,
+  .masthead-title a {
+    color: #d0d0d0;
+  }
+  .masthead-title small {
+    color: #8a8a8a;
+  }
+  .sidebar-toggle {
+    color: #c4c4c4;
+    background-color: #1a1a1c;
+  }
+  .sidebar {
+    background-color: #111113;
+  }
+
+  /* Posts */
+  .page-title,
+  .post-title,
+  .post-title a {
+    color: #e4e4e4;
+  }
+  .post-date,
+  .related-posts li small {
+    color: #8a8a8a;
+  }
+  .post h2,
+  .related,
+  .footnotes {
+    border-color: #2c2c2f;
+  }
+  .footnotes {
+    color: #a0a0a0;
+  }
+  a.reversefootnote:hover {
+    background-color: #2a2a2d;
+  }
+
+  /* Pagination */
+  .pagination {
+    color: #555;
+  }
+  .pagination-item {
+    border-color: #333;
+  }
+  a.pagination-item:hover {
+    background-color: #242427;
+  }
+
+  /* Table of contents */
+  .toc {
+    background-color: #222225;
+  }
+  .toc h3 {
+    color: #e4e4e4;
+  }
+
+  /* Heading anchors */
+  .post .heading-anchor,
+  .theme-base-09 .container .post .heading-anchor {
+    color: #777;
+  }
+
+  /* Subscribe box (its styles are inline in the page, so these need extra specificity) */
+  html .subscribe {
+    border-color: #333;
+    background: #222225;
+  }
+  html .subscribe .subscribe-title {
+    color: #e4e4e4;
+  }
+  html .subscribe input[type="email"] {
+    color: #e4e4e4;
+    background-color: #1a1a1c;
+    border-color: #444;
+  }
+
+  /* Syntax highlighting: lift the darkest token colors */
+  .highlight .lineno,
+  .highlight .c, .highlight .c1, .highlight .cs { color: #8f8f8f; }
+  .highlight .nf { color: #d98cff; }
+  .highlight .o, .highlight .ow { color: #c4c4c4; }
+  .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
+  .highlight .kp, .highlight .kr { color: #6cb6ff; }
+  .highlight .kt, .highlight .nc { color: #4fd1b5; }
+  .highlight .nb, .highlight .bp, .highlight .no { color: #7fcfcf; }
+  .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #d6d6d6; }
+  .highlight .gh, .highlight .gu { color: #9fd89f; }
+  .highlight .gp { color: #8fa8ff; }
+  .highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
+  .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh,
+  .highlight .sx { color: #f0997a; }
+  .highlight .hll { background-color: #3a3a20; }
+  .highlight .gd { background-color: #4a2224; }
+  .highlight .gi { background-color: #1f3d22; }
+}
