@@ -1,0 +1,43 @@
+/* Heading anchor links (added by public/js/script.js) */
+
+.post h1,
+.post h2,
+.post h3,
+.post h4 {
+  position: relative;
+  scroll-margin-top: 1rem;
+}
+
+.post .heading-anchor,
+.theme-base-09 .container .post .heading-anchor {
+  margin-left: .4em;
+  color: #9a9a9a;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.post .heading-anchor {
+  opacity: 0;
+  transition: opacity .15s ease-in-out;
+}
+
+.post h1:hover .heading-anchor,
+.post h2:hover .heading-anchor,
+.post h3:hover .heading-anchor,
+.post h4:hover .heading-anchor,
+.post .heading-anchor:focus {
+  opacity: 1;
+}
+
+.post .heading-anchor:hover,
+.theme-base-09 .container .post .heading-anchor:hover {
+  color: #d28445;
+  text-decoration: none;
+}
+
+/* Touch screens can't hover, so keep the anchor faintly visible */
+@media (hover: none) {
+  .post .heading-anchor {
+    opacity: .5;
+  }
+}

@@ -46,10 +46,34 @@
     });
   }
 
+  // Add a "#" link to each post heading so readers can link to a section
+  function addHeadingAnchors() {
+    var post = document.querySelector('.post');
+    if (!post) return;
+
+    var headings = post.querySelectorAll('h1:not(.post-title), h2, h3, h4');
+    headings.forEach(function(heading) {
+      if (!heading.id) return;
+
+      var anchor = document.createElement('a');
+      anchor.className = 'heading-anchor';
+      anchor.href = '#' + heading.id;
+      anchor.setAttribute('aria-label', 'Link to section: ' + heading.textContent);
+      anchor.textContent = '#';
+      heading.appendChild(anchor);
+    });
+  }
+
+  function init() {
+    // TOC reads heading text, so build it before anchors add a "#"
+    generateTOC();
+    addHeadingAnchors();
+  }
+
   // Run after DOM is loaded
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', generateTOC);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    generateTOC();
+    init();
   }
 })(document);
