@@ -12,9 +12,9 @@
     {% endif %}
   </title>
 
-  {% if page.url and site.baseurl %}
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
-  {% endif %}
+  {% unless page.is_puzzle %}
+  {% seo title=false %}
+  {% endunless %}
 
   {% if page.is_puzzle %}
   <meta name="robots" content="noindex, nofollow">

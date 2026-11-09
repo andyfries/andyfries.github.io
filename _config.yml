@@ -16,6 +16,12 @@ author:
 # Gems
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag
+
+# Social previews (jekyll-seo-tag)
+logo:                /public/android-chrome-512x512.png
+social:
+  name:              Andy Fries
 
 # Custom vars
 google_analytics_id: G-TWCTGMEFFE
